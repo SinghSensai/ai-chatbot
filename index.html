@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+        <div class="settings-container">
+            <div class="setting-group">
+                <h2>Model Settings</h2>
+                <div class="setting-item">
+                    <label for="temperature">Temperature</label>
+                    <input 
+                        type="range" 
+                        id="temperature" 
+                        min="0" 
+                        max="1" 
+                        step="0.1" 
+                        value="0.7"
+                        oninput="updateSettingValue('temperature')"
+                    >
+                    <div class="setting-value" id="temperature-value">0.7</div>
+                </div>
+                <div class="setting-item">
+                    <label for="topP">Top P</label>
+                    <input 
+                        type="range" 
+                        id="topP" 
+                        min="0" 
+                        max="1" 
+                        step="0.1" 
+                        value="0.9"
+                        oninput="updateSettingValue('topP')"
+                    >
+                    <div class="setting-value" id="topP-value">0.9</div>
+                </div>
+                <div class="setting-item">
+                    <label for="maxTokens">Max Tokens</label>
+                    <input 
+                        type="range" 
+                        id="maxTokens" 
+                        min="1" 
+                        max="2000" 
+                        step="1" 
+                        value="1000"
+                        oninput="updateSettingValue('maxTokens')"
+                    >
+                    <div class="setting-value" id="maxTokens-value">1000</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h1>AI Chatbot</h1>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    <div class="avatar">AI</div>
+                    <div class="message-content">
+                        Hello! How can I help you today?
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <div class="input-container">
+                    <input type="text" id="userInput" placeholder="Type your message..." />
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
