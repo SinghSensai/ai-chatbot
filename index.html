@@ -1,83 +1,36 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Chatbot</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="script.js"></script>
 </head>
-<body>
-    <div class="sidebar" id="sidebar">
-        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
-        <div class="settings-container">
-            <div class="setting-group">
-                <h2>Model Settings</h2>
-                <div class="setting-item">
-                    <label for="temperature">Temperature</label>
-                    <input 
-                        type="range" 
-                        id="temperature" 
-                        min="0" 
-                        max="1" 
-                        step="0.1" 
-                        value="0.7"
-                        oninput="updateSettingValue('temperature')"
-                    >
-                    <div class="setting-value" id="temperature-value">0.7</div>
-                </div>
-                <div class="setting-item">
-                    <label for="topP">Top P</label>
-                    <input 
-                        type="range" 
-                        id="topP" 
-                        min="0" 
-                        max="1" 
-                        step="0.1" 
-                        value="0.9"
-                        oninput="updateSettingValue('topP')"
-                    >
-                    <div class="setting-value" id="topP-value">0.9</div>
-                </div>
-                <div class="setting-item">
-                    <label for="maxTokens">Max Tokens</label>
-                    <input 
-                        type="range" 
-                        id="maxTokens" 
-                        min="1" 
-                        max="2000" 
-                        step="1" 
-                        value="1000"
-                        oninput="updateSettingValue('maxTokens')"
-                    >
-                    <div class="setting-value" id="maxTokens-value">1000</div>
-                </div>
+<body class="bg-gray-900 text-white flex h-screen">
+    <div class="w-1/5 bg-gray-800 shadow-lg p-4 flex flex-col space-y-4">
+        <h2 class="text-xl font-bold">ChatGPT Clone</h2>
+        <button class="w-full bg-blue-500 text-white p-2 rounded-lg">New Chat</button>
+        <div class="flex-1 overflow-y-auto">
+            <h3 class="text-sm font-semibold mb-2">Settings</h3>
+            <label for="temperature" class="block text-sm">Temperature:</label>
+            <input type="number" id="temperature" class="w-full p-2 border rounded bg-gray-700 text-white mb-4" value="0.7" step="0.1" min="0" max="1" title="Set temperature for AI responses">
+            <label for="top_p" class="block text-sm">Top P:</label>
+            <input type="number" id="top_p" class="w-full p-2 border rounded bg-gray-700 text-white" value="0.9" step="0.1" min="0" max="1" title="Set Top P value for AI responses">
+        </div>
+    </div>
+    <div class="w-4/5 flex flex-col items-center justify-center p-6">
+        <div class="w-full max-w-2xl bg-gray-800 shadow-lg rounded-lg p-6 flex flex-col">
+            <div id="chatbox" class="flex-1 overflow-y-auto mb-4 p-4 space-y-4 max-h-[70vh] bg-gray-900 rounded-lg">
+                <p class="text-gray-400 text-sm text-center">ChatGPT-like interface</p>
+            </div>
+            <div class="flex items-center border border-gray-600 rounded-lg bg-gray-700 p-2">
+                <label for="userInput" class="sr-only">Chat Input</label>
+                <input id="userInput" type="text" placeholder="Message ChatGPT..." title="Type your message here" class="flex-1 bg-transparent outline-none text-white px-2">
+                <button onclick="sendMessage()" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Send</button>
             </div>
         </div>
     </div>
 
-    <div class="main-container">
-        <div class="chat-container">
-            <div class="chat-header">
-                <h1>AI Chatbot</h1>
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="message bot">
-                    <div class="avatar">AI</div>
-                    <div class="message-content">
-                        Hello! How can I help you today?
-                    </div>
-                </div>
-            </div>
-            <div class="chat-input">
-                <div class="input-container">
-                    <input type="text" id="userInput" placeholder="Type your message..." />
-                    <button onclick="sendMessage()">Send</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
